@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>T32 Multispeciality Dental Clinic - Feedback</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0a2540;
+            --navy-2: #123c63;
+            --teal: #0e9f9a;
+            --teal-light: #d7f5f4;
+            --gold: #f5b942;
+            --text: #1f2937;
+            --muted: #6b7a8f;
+            --ring: rgba(14, 159, 154, 0.25);
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 32px 20px;
+            background:
+                radial-gradient(1200px 600px at 80% -10%, rgba(14,159,154,.18), transparent 60%),
+                radial-gradient(900px 500px at -10% 100%, rgba(10,37,64,.35), transparent 55%),
+                linear-gradient(160deg, #eef6fb 0%, #e4f0f7 45%, #dcebee 100%);
+        }
+        .bg-deco {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(2px);
+            opacity: .12;
+            pointer-events: none;
+            animation: float 9s ease-in-out infinite;
+        }
+        .bg-deco.d1 { width: 220px; height: 220px; background: var(--teal); top: 8%; left: 6%; }
+        .bg-deco.d2 { width: 140px; height: 140px; background: var(--navy); bottom: 10%; right: 8%; animation-delay: -3s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-18px); }
+        }
+
+        .container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            max-width: 520px;
+            width: 100%;
+            padding: 42px 40px 38px;
+            border-radius: 24px;
+            box-shadow:
+                0 24px 60px rgba(10, 37, 64, 0.14),
+                0 2px 8px rgba(10, 37, 64, 0.06);
+            border: 1px solid rgba(255,255,255,0.7);
+            overflow: hidden;
+            animation: rise .5s ease both;
+        }
+        @keyframes rise {
+            from { opacity: 0; transform: translateY(18px) scale(.985); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            inset: 0 0 auto 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--navy), var(--teal), var(--gold));
+        }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .logo-badge {
+            width: 64px; height: 64px;
+            margin: 0 auto 14px;
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700; font-size: 22px;
+            color: #fff;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 60%, var(--teal) 130%);
+            box-shadow: 0 10px 24px rgba(10, 37, 64, 0.35), inset 0 1px 0 rgba(255,255,255,.25);
+        }
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--navy);
+            font-size: 26px;
+            letter-spacing: .2px;
+            margin-bottom: 4px;
+        }
+        .header .location {
+            color: var(--muted);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: .4px;
+        }
+        .header .divider {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-top: 16px;
+        }
+        .header .divider::before, .header .divider::after {
+            content: ""; flex: 1; max-width: 70px; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(10,37,64,.25), transparent);
+        }
+        .header .divider span { color: var(--gold); font-size: 14px; }
+
+        .form-group { margin-bottom: 22px; }
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 13.5px;
+            letter-spacing: .3px;
+            color: var(--navy);
+            margin-bottom: 9px;
+        }
+        label small { font-weight: 500; color: var(--muted); font-size: 12px; }
+        .select-wrap { position: relative; }
+        .select-wrap::after {
+            content: "▾";
+            position: absolute;
+            right: 16px; top: 50%;
+            transform: translateY(-50%);
+            color: var(--teal);
+            pointer-events: none;
+            font-size: 13px;
+        }
+        select, textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1.5px solid #dde7ee;
+            border-radius: 14px;
+            font-size: 14.5px;
+            font-family: inherit;
+            font-weight: 500;
+            color: var(--text);
+            background: #fbfdfe;
+            transition: border-color .2s, box-shadow .2s, background .2s, transform .15s;
+            appearance: none;
+        }
+        select:hover, textarea:hover { border-color: #b8cfdd; }
+        select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--teal);
+            background: #fff;
+            box-shadow: 0 0 0 4px var(--ring);
+        }
+        textarea {
+            resize: vertical;
+            min-height: 110px;
+            line-height: 1.6;
+        }
+        textarea::placeholder, select:required:invalid { color: #9aa8b5; }
+
+        .rating-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        .rating-row input { display: none; }
+        .rating-row label.pill {
+            cursor: pointer;
+            text-align: center;
+            padding: 12px 4px;
+            border: 1.5px solid #dde7ee;
+            border-radius: 14px;
+            background: #fbfdfe;
+            font-size: 12.5px;
+            font-weight: 600;
+            color: var(--muted);
+            transition: all .2s ease;
+            margin: 0;
+        }
+        .rating-row label.pill .emoji { display: block; font-size: 20px; margin-bottom: 4px; }
+        .rating-row label.pill:hover { border-color: var(--teal); transform: translateY(-2px); box-shadow: 0 6px 14px rgba(14,159,154,.15); }
+        .rating-row input:checked + label.pill {
+            background: linear-gradient(135deg, var(--teal), #0b8a86);
+            border-color: transparent;
+            color: #fff;
+            box-shadow: 0 8px 18px rgba(14,159,154,.35);
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 6px;
+            padding: 16px;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: .4px;
+            color: #fff;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            background: linear-gradient(120deg, var(--navy) 0%, var(--navy-2) 55%, #15606b 130%);
+            box-shadow: 0 12px 26px rgba(10,37,64,.32);
+            transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(10,37,64,.4); filter: brightness(1.08); }
+        .btn:active { transform: translateY(0) scale(.99); }
+        .btn:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+        /* post-submit review redirect */
+        .redirect-card {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 16px;
+            text-align: center;
+            animation: pop .45s cubic-bezier(.34,1.56,.64,1) both;
+        }
+        .redirect-card.happy {
+            background: linear-gradient(135deg, var(--teal-light), #eaf9f8);
+            border: 1px solid rgba(14,159,154,.35);
+        }
+        .redirect-card.fix {
+            background: #fdf3e7;
+            border: 1px solid rgba(245,185,66,.45);
+        }
+        .redirect-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .redirect-card.happy h3 { color: #0a6f6b; }
+        .redirect-card.fix h3 { color: #9a6a12; }
+        .redirect-card p { font-size: 13.5px; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+        .redirect-card .btn-teal {
+            display: block;
+            text-decoration: none;
+            background: linear-gradient(120deg, var(--teal), #0b8a86);
+            box-shadow: 0 10px 22px rgba(14,159,154,.35);
+            font-size: 15px;
+            padding: 14px;
+            margin-top: 0;
+        }
+        .redirect-card .btn-teal:hover { filter: brightness(1.08); transform: translateY(-2px); }
+        .redirect-card a.phone { color: var(--navy); font-weight: 700; text-decoration: none; }
+
+        @keyframes pop {
+            from { opacity: 0; transform: scale(.9) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 18px;
+            font-size: 11.5px;
+            color: var(--muted);
+            letter-spacing: .3px;
+        }
+        @media (max-width: 460px) {
+            .container { padding: 32px 22px; border-radius: 20px; }
+            .rating-row { grid-template-columns: repeat(2, 1fr); }
+            .header h1 { font-size: 22px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-deco d1"></div>
+    <div class="bg-deco d2"></div>
+
+    <div class="container">
+        <div class="header">
+            <div class="logo-badge">T32</div>
+            <h1>Multispeciality Dental Clinic</h1>
+            <p class="location">📍 Mehrauli, New Delhi</p>
+            <div class="divider"><span>✦</span></div>
+        </div>
+
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label>Overall Experience</label>
+                <div class="rating-row" id="overallRow">
+                    <input type="radio" name="overall" id="ov-excellent" value="Excellent" required>
+                    <label class="pill" for="ov-excellent"><span class="emoji">🌟</span>Excellent</label>
+                    <input type="radio" name="overall" id="ov-good" value="Good">
+                    <label class="pill" for="ov-good"><span class="emoji">👍</span>Good</label>
+                    <input type="radio" name="overall" id="ov-average" value="Average">
+                    <label class="pill" for="ov-average"><span class="emoji">😐</span>Average</label>
+                    <input type="radio" name="overall" id="ov-poor" value="Poor">
+                    <label class="pill" for="ov-poor"><span class="emoji">😞</span>Poor</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="staff">Staff Friendliness</label>
+                <div class="select-wrap">
+                    <select id="staff" name="staff" required>
+                        <option value="" disabled selected>Select rating...</option>
+                        <option value="Very Friendly">😊 Very Friendly</option>
+                        <option value="Friendly">🙂 Friendly</option>
+                        <option value="Neutral">😐 Neutral</option>
+                        <option value="Unfriendly">🙁 Unfriendly</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cleanliness">Clinic Cleanliness</label>
+                <div class="select-wrap">
+                    <select id="cleanliness" name="cleanliness" required>
+                        <option value="" disabled selected>Select rating...</option>
+                        <option value="Pristine">✨ Pristine &amp; Spotless</option>
+                        <option value="Good">👍 Good</option>
+                        <option value="Needs Improvement">🔧 Needs Improvement</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="comment">Additional Comments <small>— what did you like most?</small></label>
+                <textarea id="comment" name="comment" placeholder="Tell us about your experience with the doctor or treatment..."></textarea>
+            </div>
+
+            <button type="submit" class="btn" id="submitBtn">Submit Feedback →</button>
+
+            <div id="happy-redirect" class="redirect-card happy">
+                <h3>🎉 Thank you so much!</h3>
+                <p>We're thrilled you enjoyed your visit. It takes less than a minute — and means the world to us:</p>
+                <a class="btn btn-teal" id="googleReviewBtn" href="#" target="_blank" rel="noopener">Leave a Google Review 🌟</a>
+            </div>
+
+            <div id="fix-redirect" class="redirect-card fix">
+                <h3>🙏 Thank you for your honesty</h3>
+                <p>We're sorry we didn't meet expectations this time. We'd genuinely love the chance to make it right — please reach out directly at <a class="phone" href="tel:+919717729664">+91 97177 29664</a> or reply to this message.</p>
+            </div>
+
+            <p class="footer-note">Your feedback helps us craft brighter smiles. 🦷</p>
+        </form>
+    </div>
+
+    <script>
+        // Direct Google Review link for T32 Multispeciality Dental Clinic (Mehrauli)
+        const GOOGLE_REVIEW_URL = 'https://search.google.com/local/writereview?placeid=ChIJb4-qNVcfDTkRK_pEJ1HscCs';
+        document.getElementById('googleReviewBtn').href = GOOGLE_REVIEW_URL;
+
+        document.getElementById('feedbackForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('submitBtn');
+            const happyCard = document.getElementById('happy-redirect');
+            const fixCard = document.getElementById('fix-redirect');
+
+            // Hide any previous cards for smooth re-testing
+            happyCard.style.display = 'none';
+            fixCard.style.display = 'none';
+
+            btn.disabled = true;
+            btn.textContent = 'Submitting...';
+
+            const formData = {
+                overall: (document.querySelector('input[name="overall"]:checked') || {}).value || '',
+                staff: document.getElementById('staff').value,
+                cleanliness: document.getElementById('cleanliness').value,
+                comment: document.getElementById('comment').value
+            };
+
+            try {
+                // Production webhook URL connected to n8n
+                const webhookUrl = 'https://uptobro.app.n8n.cloud/webhook/dental-review';
+
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData)
+                });
+
+                if (response.ok) {
+                    document.getElementById('feedbackForm').reset();
+                    // Happy patients → Google review; everyone else → "let us fix it"
+                    const happy = formData.overall === 'Excellent' || formData.overall === 'Good';
+                    const card = happy ? happyCard : fixCard;
+                    card.style.display = 'block';
+                    card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                } else {
+                    alert('Something went wrong. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to connect to the server.');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Submit Feedback →';
+            }
+        });
+    </script>
+</body>
+</html>
